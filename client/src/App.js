@@ -75,6 +75,11 @@ function App() {
 
   const handleUploadCarSigns = async (eventTarget) => {
 
+    if (eventTarget.files.length > 3) {
+      alert('Upload 3 Files at max');
+      return;
+    }
+    
     clearFilesBucketOnAWS()
       .then(res => {
         console.log(res);
