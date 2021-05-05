@@ -1,26 +1,24 @@
 import json
 import sys
+from python_app_modules.aws_functions import *
+from python_app_modules.validate_car_sign import *
+from python_app_modules.image_manipulation_functions import *
 
 
 if __name__ == '__main__':
 
+    #file_name_on_aws_s3 = 'spz_4.jpg'
+    file_name_on_aws_s3 = sys.argv[1]
+
+    result_message = {
+        'originalImageName': file_name_on_aws_s3,
+        'thresholdImageName': '',
+        'validationError': '',
+        'childProcessError': '',
+        'imageText': ''
+    }
+
     try:
-
-        
-        #file_name_on_aws_s3 = 'spz_4.jpg'
-        file_name_on_aws_s3 = sys.argv[1]
-
-        result_message = {
-            'originalImageName': file_name_on_aws_s3,
-            'thresholdImageName': '',
-            'validationError': '',
-            'childProcessError': '',
-            'imageText': ''
-        }
-
-        from python_app_modules.aws_functions import *
-        from python_app_modules.validate_car_sign import *
-        from python_app_modules.image_manipulation_functions import *
 
         # Config options for reading the text from image.
         read_image_to_string_config = '--psm 10 --oem 3  -c tessedit_char_whitelist=0123456789ABCDEFHIJKLMNPRSTVXYZ'
@@ -56,10 +54,10 @@ if __name__ == '__main__':
         # Apply business logic on read text and check if found text can be car sign.
         validate_car_sign(image_text, file_object['filename'])
         
-    #except Car_sign_validation_error as error:
+    except Car_sign_validation_error as error:
 
         # Catch car sign validation error and explain which test id did not pass.
-        #result_message['validationError'] = str(error)
+        result_message['validationError'] = str(error)
 
     except:
 

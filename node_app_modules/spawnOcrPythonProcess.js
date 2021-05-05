@@ -21,9 +21,9 @@ function spawnOcrPythonProcess(filename) {
             pythonAnswerMessage = JSON.parse(data);
         });
 
-        pythonSliceMicroService.on('uncaughtException', function (error) {
+        pythonSliceMicroService.on('error', function (error) {
             console.log(error)
-            JSON.parse(error);
+            //JSON.parse(error);
             pythonAnswerMessage = JSON.parse(error);
         });
 
