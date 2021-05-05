@@ -31,7 +31,7 @@ app.get('/readtextfromimages', async (req, res) => {
 
     const listed_bucket = await listPdfSlicerBucketOnAWS()
         .catch(rejectedMessage => {
-            console.error(rejectedMessage)
+            console.error(rejectedMessage);
             res.status(500);
             responseObject = rejectedMessage;
         });
@@ -63,8 +63,8 @@ app.get('/readtextfromimages', async (req, res) => {
 
 
         } catch (error) {
-
-            res.status(502);
+            console.log(error);
+            res.status(500);
             responseObject.spawnError = error;
 
         }
@@ -149,7 +149,7 @@ app.post('/uploadmultiplefiles', async (req, res) => {
     }
 
     else if (typeof req.files.carSigns === 'object' && req.files.carSigns !== null && !Array.isArray(req.files.carSigns)) {
-        
+
         uploadFileToAWS(req.files.carSigns)
             .then(resolvedObj => res.send(resolvedObj))
             .catch(rejectedObj => {

@@ -15,18 +15,23 @@ function spawnOcrPythonProcess(filename) {
         );
 
         pythonSliceMicroService.stdout.setEncoding('utf8');
+        
         pythonSliceMicroService.stdout.on('data', function (data) {
-            try {
-                JSON.parse(data);
-                pythonAnswerMessage = JSON.parse(data);
-            } catch (e) {
-                console.log(data);
-            }
+            JSON.parse(data);
+            pythonAnswerMessage = JSON.parse(data);
         });
 
+        pythonSliceMicroService.on('uncaughtException', function (error) {
+            console.log(error)
+            JSON.parse(error);
+            pythonAnswerMessage = JSON.parse(error);
+        });
+
+
         pythonSliceMicroService.on('close', (code) => {
-            //console.log(code);
-            console.log(pythonAnswerMessage);
+            
+            console.log(code);
+            
             if (code == "0") {
                 resolve(
                     pythonAnswerMessage
