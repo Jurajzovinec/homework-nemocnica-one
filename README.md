@@ -1,7 +1,7 @@
 
 # Optical character recognition homework
 *************************************************
-## APPLICATION URL https://drawing-slicer.herokuapp.com/
+## APPLICATION URL https://ocr-recognition-homework.herokuapp.com/
 *************************************************
 
 This ocr application uses Otsu algorithm in order to preprocess image file. Application uses AWS s3 storage as temporarly file storage system and allows user to get thresholded image with **DOWNLOAD IMAGE** button.
