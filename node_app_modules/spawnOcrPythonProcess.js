@@ -20,7 +20,6 @@ function spawnOcrPythonProcess(filename) {
             
             try {
             
-                JSON.parse(data);
                 pythonAnswerMessage = JSON.parse(data);
             
             } catch (error) {
