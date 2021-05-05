@@ -64,7 +64,7 @@ app.get('/readtextfromimages', async (req, res) => {
 
         } catch (error) {
 
-            res.status(500);
+            res.status(502);
             responseObject.spawnError = error;
 
         }
