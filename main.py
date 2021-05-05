@@ -5,9 +5,7 @@ import sys
 if __name__ == '__main__':
 
     try:
-        from python_app_modules.aws_functions import *
-        from python_app_modules.validate_car_sign import *
-        from python_app_modules.image_manipulation_functions import *
+
         
         #file_name_on_aws_s3 = 'spz_4.jpg'
         file_name_on_aws_s3 = sys.argv[1]
@@ -19,6 +17,10 @@ if __name__ == '__main__':
             'childProcessError': '',
             'imageText': ''
         }
+
+        from python_app_modules.aws_functions import *
+        from python_app_modules.validate_car_sign import *
+        from python_app_modules.image_manipulation_functions import *
 
         # Config options for reading the text from image.
         read_image_to_string_config = '--psm 10 --oem 3  -c tessedit_char_whitelist=0123456789ABCDEFHIJKLMNPRSTVXYZ'
