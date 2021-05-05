@@ -16,11 +16,11 @@ This ocr application uses Otsu algorithm in order to preprocess image file. Appl
 
 ## Python part
 
-Spawned and top layer script is [main.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/image_manipulation_functions.py) which flushes by printing result of the process. For the purpose of this application have been coded three modules:
+Spawned and top layer script is [main.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/image_manipulation_functions.py) which returns result of its process by printing in json object. For the purpose of this application have been coded three modules:
 
 * [aws_functions.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/aws_functions.py) -> which consinsts of functions regarding communication with AWS S3 file storage cloud
 * [image_manipulation_functions.py.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/image_manipulation_functions.py) -> which consists of functions regarding image processing
-* [validate_car_sign(.py.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/validate_car_sign.py) -> 'business logic' with no external dependecies, evaluates scanned text from image with real life czech evidential car sign patterns
+* [validate_car_sign.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/validate_car_sign.py) -> 'business logic' with no external dependecies, evaluates scanned text from image with real life czech evidential car sign patterns
 
 For thresholding has been used **OTSU algorithm** which has been imported from pytreshold package
 
