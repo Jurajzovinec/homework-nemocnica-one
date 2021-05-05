@@ -46,10 +46,10 @@ def read_text_from_image(image, config):
     load_dotenv()
 
     #Development
-    pytesseract.pytesseract.tesseract_cmd = os.getenv('PATH_TO_TESSERACT_EXE')
+    #pytesseract.pytesseract.tesseract_cmd = os.getenv('PATH_TO_TESSERACT_EXE')
 
     # Production
-    #pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
+    pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
 
     read_text = pytesseract.image_to_string(image, config=config)
 
