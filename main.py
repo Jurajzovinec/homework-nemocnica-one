@@ -17,8 +17,6 @@ if __name__ == '__main__':
         'imageText': ''
     }
 
-    raise ConnectionAbortedError('This is fucked up')
-
     try:
 
         # Config options for reading the text from image.
