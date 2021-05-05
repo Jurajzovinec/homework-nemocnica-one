@@ -45,12 +45,12 @@ def read_text_from_image(image, config):
 
     load_dotenv()
 
-    # Development
+    #Development
     # pytesseract.pytesseract.tesseract_cmd = os.getenv('PATH_TO_TESSERACT_EXE')
 
     # Production
     pytesseract.pytesseract.tesseract_cmd = '/app/.apt/usr/bin/tesseract'
-    
+
     read_text = pytesseract.image_to_string(image, config=config)
 
     sanitized_text = remove_non_alphanumeric_chars(read_text)

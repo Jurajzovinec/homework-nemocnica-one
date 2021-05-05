@@ -76,8 +76,14 @@ function App() {
   const handleUploadCarSigns = async (eventTarget) => {
 
     clearFilesBucketOnAWS()
-      .then(res => loadFilesOnAWS(eventTarget))
-      .then(res => readTextFromImagesOnAws())
+      .then(res => {
+        console.log(res);
+        return loadFilesOnAWS(eventTarget);
+      })
+      .then(res => {
+        console.log(res);
+        return readTextFromImagesOnAws();
+      })
       .then(newTableData => {
         console.log(newTableData);
         setTableData(newTableData);
