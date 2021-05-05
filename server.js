@@ -31,17 +31,16 @@ app.get('/readtextfromimages', async (req, res) => {
 
     const listed_bucket = await listPdfSlicerBucketOnAWS()
         .catch(rejectedMessage => {
-            //console.error(rejectedMessage);
             res.status(500);
             responseObject = rejectedMessage;
         });
 
     console.log(listed_bucket.filesOnBucket.length);
 
-    if (listed_bucket.filesOnBucket.length > 15) {
+    if (listed_bucket.filesOnBucket.length > 4) {
 
         res.status(202);
-        responseObject = { message: "Please clear AWS bucket at first. Number of files exceeds 15." };
+        responseObject = { message: "Post 3 files at max." };
 
     } else if (listed_bucket.filesOnBucket.length == 0) {
 
