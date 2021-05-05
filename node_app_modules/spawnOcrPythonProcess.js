@@ -17,8 +17,19 @@ function spawnOcrPythonProcess(filename) {
 
         pythonSliceMicroService.stdout.setEncoding('utf8');
         pythonSliceMicroService.stdout.on('data', function (data) {
-            JSON.parse(data);
-            pythonAnswerMessage = JSON.parse(data);
+            
+            try {
+            
+                JSON.parse(data);
+                pythonAnswerMessage = JSON.parse(data);
+            
+            } catch (error) {
+
+                reject({
+                    'unprocesseData': filename,
+                    'serverAppError': error,
+                });
+            }
         });
 
         pythonSliceMicroService.stderr.setEncoding('utf8');
