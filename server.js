@@ -31,7 +31,7 @@ app.get('/readtextfromimages', async (req, res) => {
 
     const listed_bucket = await listPdfSlicerBucketOnAWS()
         .catch(rejectedMessage => {
-            console.error(rejectedMessage);
+            //console.error(rejectedMessage);
             res.status(500);
             responseObject = rejectedMessage;
         });
@@ -61,9 +61,9 @@ app.get('/readtextfromimages', async (req, res) => {
             res.status(200);
             responseObject = { results: spawnDataOutput };
 
-
         } catch (error) {
-            console.log(error);
+
+            console.log('caught error is');
             res.status(500);
             responseObject.spawnError = error;
 

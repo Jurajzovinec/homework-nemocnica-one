@@ -4,12 +4,11 @@ from python_app_modules.aws_functions import *
 from python_app_modules.validate_car_sign import *
 from python_app_modules.image_manipulation_functions import *
 
-
 if __name__ == '__main__':
 
     #file_name_on_aws_s3 = 'spz_4.jpg'
     file_name_on_aws_s3 = sys.argv[1]
-
+    
     result_message = {
         'originalImageName': file_name_on_aws_s3,
         'thresholdImageName': '',
@@ -17,6 +16,8 @@ if __name__ == '__main__':
         'childProcessError': '',
         'imageText': ''
     }
+
+    raise ConnectionAbortedError('This is fucked up')
 
     try:
 
@@ -68,3 +69,4 @@ if __name__ == '__main__':
 
         # Flush collected data to upper listener, which this child process is spawned from.
         print(json.dumps(result_message))
+

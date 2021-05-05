@@ -3,7 +3,6 @@ import io
 from boto3.session import Session
 from dotenv import load_dotenv
 
-
 def download_file_from_aws_s3(filename):
 
     load_dotenv()

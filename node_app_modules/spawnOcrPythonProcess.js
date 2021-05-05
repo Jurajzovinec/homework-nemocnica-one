@@ -6,6 +6,7 @@ function spawnOcrPythonProcess(filename) {
     return new Promise(async (resolve, reject) => {
 
         let pythonAnswerMessage;
+        let errorData;
 
         const pythonSliceMicroService = spawn(
             config.python_intepreter_path, [
@@ -15,33 +16,28 @@ function spawnOcrPythonProcess(filename) {
         );
 
         pythonSliceMicroService.stdout.setEncoding('utf8');
-        
         pythonSliceMicroService.stdout.on('data', function (data) {
             JSON.parse(data);
             pythonAnswerMessage = JSON.parse(data);
         });
 
-        pythonSliceMicroService.on('error', function (error) {
-            console.log(error)
-            //JSON.parse(error);
-            pythonAnswerMessage = JSON.parse(error);
+        pythonSliceMicroService.stderr.setEncoding('utf8');
+        pythonSliceMicroService.stderr.on('data', function (data) {
+            errorData += data;
         });
-
 
         pythonSliceMicroService.on('close', (code) => {
-            
-            console.log(code);
-            
+
             if (code == "0") {
-                resolve(
-                    pythonAnswerMessage
-                );
+                resolve(pythonAnswerMessage);
             } else {
-                reject(
-                    pythonAnswerMessage
-                );
+                reject({
+                    'originalImageName': filename,
+                    'serverAppError': errorData,
+                });
             }
         });
+
 
     });
 
