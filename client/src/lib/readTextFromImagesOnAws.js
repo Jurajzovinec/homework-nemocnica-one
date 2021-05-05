@@ -12,13 +12,13 @@ export default async function readTextFromImagesOnAws(filenameOnAws) {
         })
             .then(response => response.json())
             .then(resolvedPromiseData => {
-                console.log(resolvedPromiseData)
+                console.log(resolvedPromiseData);
                 if (resolvedPromiseData.length === 0) {
                     reject('AWS S3 bucket is empty');
                 } else {
                     resolve(resolvedPromiseData.results);
                 }
-            });
+            }).catch(error => console.log(error));
     });
 
 }
