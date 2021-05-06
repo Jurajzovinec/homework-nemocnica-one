@@ -112,7 +112,7 @@ function App() {
           className={classes.input}
           style={{ display: 'none' }}
           id="raised-button-file"
-          multiple
+          //multiple
           type="file"
           onChange={(e) => handleUploadCarSigns(e.target)}
 
