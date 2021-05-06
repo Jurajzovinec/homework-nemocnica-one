@@ -2,6 +2,10 @@
 # Optical character recognition homework
 *************************************************
 ## APPLICATION URL https://ocr-recognition-homework.herokuapp.com/
+Note this is prototype and has some issues:
+Issues: 
+* long boot time
+* lack of operational memory may lead to 503 status code or fail of server
 *************************************************
 
 This ocr application uses Otsu algorithm in order to preprocess image file. Application uses AWS s3 storage as temporarly file storage system and allows user to get thresholded image with **DOWNLOAD IMAGE** button.

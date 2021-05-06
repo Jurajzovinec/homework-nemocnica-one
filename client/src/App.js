@@ -75,8 +75,8 @@ function App() {
 
   const handleUploadCarSigns = async (eventTarget) => {
 
-    if (eventTarget.files.length > 3) {
-      alert('Upload 3 Files at max');
+    if (eventTarget.files.length > 2) {
+      alert('Upload 2 Files at max');
       return;
     }
     
