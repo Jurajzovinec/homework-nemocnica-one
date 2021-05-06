@@ -6,6 +6,7 @@ Note this is prototype and has some issues:
 Issues: 
 * long boot time
 * lack of operational memory may lead to 503 status code or fail of server
+* AWS limit
 *************************************************
 
 This ocr application uses Otsu algorithm in order to preprocess image file. Application uses AWS s3 storage as temporarly file storage system and allows user to get thresholded image with **DOWNLOAD IMAGE** button.
@@ -20,7 +21,7 @@ This ocr application uses Otsu algorithm in order to preprocess image file. Appl
 
 ## Python part
 
-Spawned and top layer script is [main.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/image_manipulation_functions.py) which returns result of its process by printing in json object. For the purpose of this application have been coded three modules:
+Spawned and top layer script is [main.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/main.py) which returns result of its process by printing in json object. For the purpose of this application have been coded three modules:
 
 * [aws_functions.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/aws_functions.py) -> which consinsts of functions regarding communication with AWS S3 file storage cloud
 * [image_manipulation_functions.py.py](https://github.com/Jurajzovinec/homework-nemocnica-one/blob/master/python_app_modules/image_manipulation_functions.py) -> which consists of functions regarding image processing
